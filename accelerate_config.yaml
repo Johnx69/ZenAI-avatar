@@ -1,0 +1,12 @@
+compute_environment: LOCAL_MACHINE
+mixed_precision: bf16
+distributed_type: DEEPSPEED          # ZeRO-2 still helps even on one GPU
+num_processes: 1                     # ←─ just one process
+gpu_ids: 0                           # ←─ only GPU 0
+deepspeed_config:
+  zero_stage: 2
+  bf16:
+    enabled: true
+  gradient_accumulation_steps: 1
+  gradient_clipping: 1.0
+  steps_per_print: 1000
